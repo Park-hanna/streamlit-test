@@ -11,9 +11,11 @@ import pinecone
 #Set up OpenAI API Key
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 pinecone_api_key = st.secrets["PINECONE_API_KEY"]
-pinecone_env = st.secrets["PINECONE_ENVIRONMENT"]
+pinecone_env = "gcp-starter"
+pinecone_name = "test"
+
 pinecone.init(api_key=pinecone_api_key, environment=pinecone_env)
-index = pinecone.Index(st.secrets["PINECONE_INDEX_NAME"])
+index = pinecone.Index(pinecone_name)
 
 st.header("English Education GPT - Chat with a Teacher")
 
