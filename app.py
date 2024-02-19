@@ -6,16 +6,19 @@ from render import bot_msg_container_html_template, user_msg_container_html_temp
 #from streamlit_chat import message
 from utils import semantic_search
 import prompts
-import pinecone
-
+from pinecone import Pinecone
 #Set up OpenAI API Key
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 pinecone_api_key = st.secrets["PINECONE_API_KEY"]
 pinecone_env = "gcp-starter"
 pinecone_name = "test"
 
-pinecone.init(api_key=pinecone_api_key, environment=pinecone_env)
-index = pinecone.Index(pinecone_name)
+pc = Pinecone(
+    api_key = os.environ.get(st.secrets["PINECONE_API_KEY"]),
+    
+)
+# pinecone.init(api_key=pinecone_api_key, environment=pinecone_env)
+# index = pinecone.Index(pinecone_name)
 
 st.header("English Education GPT - Chat with a Teacher")
 
