@@ -3,7 +3,7 @@ import openai
 import streamlit as st
 from dotenv import load_dotenv
 from render import bot_msg_container_html_template, user_msg_container_html_template 
-#from streamlit_chat import message
+from streamlit_chat import message
 from utils import semantic_search
 import prompts
 from pinecone import Pinecone
@@ -62,7 +62,7 @@ def generate_response():
     messages.append({"role" : "user", "content":query_with_context})
 
     #Run the LLMChain
-    response = openai.ChatCompletion.create(model="gpt-4-0125-preview", messages=messages)
+    response = openai.chat.completions.create(model="gpt-4-0125-preview", messages=messages)
     print(response)
 
     #Parse response
